@@ -81,15 +81,15 @@ public class GamePage extends javax.swing.JFrame {
 
         card4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
         card4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(card4, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 280, 70, 90));
+        getContentPane().add(card4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 280, 70, 90));
 
         card5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
         card5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(card5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 280, 70, 90));
+        getContentPane().add(card5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 280, 70, 90));
 
         deck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
         deck.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(deck, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 280, 70, 90));
+        getContentPane().add(deck, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 350, 70, 90));
 
         player2card1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
         player2card1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -114,12 +114,12 @@ public class GamePage extends javax.swing.JFrame {
         getContentPane().add(betAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 680, 100, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setText("Pot:");
+        jLabel1.setText("Pot: $");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 40));
 
         potAmount.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        potAmount.setText("$0");
-        getContentPane().add(potAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 50, 40));
+        potAmount.setText("0");
+        getContentPane().add(potAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 150, 40));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Backgrounds/plainWhite.png"))); // NOI18N
