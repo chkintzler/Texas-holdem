@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 
-
-
-//other comment
-
 package Game;
 
 import javax.swing.Icon;
@@ -54,7 +50,13 @@ public class Card extends javax.swing.JFrame{
     }
     
     
-    
+    public void test()
+    {
+        int a = 5;
+        int b = 10;
+        
+        int c = a + b;
+    }
     
     
     
