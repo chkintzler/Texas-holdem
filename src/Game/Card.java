@@ -52,7 +52,7 @@ public class Card extends javax.swing.JFrame{
     
     public void test()
     {
-        int a = 5;
+        int a = 888;
         int b = 10;
         
         int c = a + b;
