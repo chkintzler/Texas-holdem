@@ -8,8 +8,6 @@
 
 //other comment
 
-//comment REEEEEEEE
-
 package Game;
 
 import javax.swing.Icon;
