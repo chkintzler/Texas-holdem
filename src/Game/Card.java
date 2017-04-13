@@ -20,18 +20,7 @@ public class Card extends javax.swing.JFrame{
         suit = newSuit;
     }
     
-    public Card(int newSuit, int newFaceValue, int x, int y, boolean faceUp)
-    {
-        faceValue = newFaceValue;
-        suit = newSuit;
-        
-        //card = new javax.swing.JLabel();
-        
-        //player2card2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
-        //player2card2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        //getContentPane().add(player2card2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, 70, 90));
-       
-    }
+    
     
     private int faceValue;
     private int suit;
