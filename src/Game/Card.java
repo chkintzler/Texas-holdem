@@ -8,6 +8,7 @@ package Game;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
+import java.awt.Container;
 
 /**
  *
@@ -21,19 +22,61 @@ public class Card extends javax.swing.JFrame{
         suit = newSuit;
     }
     
+    public Card(int newSuit, int newFaceValue, Container game, int x, int y)
+    {
+        faceValue = newFaceValue;
+        suit = newSuit;
+        
+       
+        displayCard = new javax.swing.JLabel(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/card" + cardToString() + ".png")));
+        
+        game.add(displayCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, 70, 90), getComponentCount());
+        
+        
+        
+    }
     
     
+    private javax.swing.JLabel displayCard;
     private int faceValue;
     private int suit;
     boolean faceUp = false;
     
    
+    public void moveCard(Container game, int x, int y, boolean faceUp)
+    {
+        this.faceUp = faceUp;
+        if(faceUp)
+            displayCard = new javax.swing.JLabel(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/card" + cardToString() + ".png")));
+        else
+            displayCard = new javax.swing.JLabel(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png")));
+        game.add(displayCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(x, y, 70, 90), getComponentCount());
+       
+    }
     
+    public void moveCard(int x, int y)
+    {
+        displayCard.setLocation(x, y);
+    }
     
     public int getValue()
     {
         
         return faceValue;
+    }
+    
+    
+    public void flip() 
+    {
+        
+        faceUp = !faceUp;
+         if(faceUp)
+            displayCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/card" + cardToString() + ".png")));
+        else
+            displayCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png")));
+         
+         
+         
     }
     
     
@@ -50,13 +93,6 @@ public class Card extends javax.swing.JFrame{
     }
     
     
-    public void test()
-    {
-        int a = 888;
-        int b = 10;
-        
-        int c = a + b;
-    }
     
     
     
