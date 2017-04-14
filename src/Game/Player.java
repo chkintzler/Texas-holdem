@@ -18,12 +18,15 @@ public class Player extends Deck {
         money = 100;
     }
     
-    public Player(int startingMoney)
+    public Player(int startingMoney, int number)
     {
         money = startingMoney;
+        this.number = number;
     }
     
     int money;
+    int number;
+    String name;
     
     public void printHand()
     {
@@ -32,5 +35,8 @@ public class Player extends Deck {
     }
     
     
-    
+    public Card getCard(int index)
+    {
+        return deck.get(index);
+    }
 }
