@@ -41,6 +41,7 @@ public class GamePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         callButton = new javax.swing.JButton();
         deck = new javax.swing.JLabel();
         placeBetButton = new javax.swing.JButton();
@@ -60,6 +61,14 @@ public class GamePage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("Instructions");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 10, -1, -1));
 
         callButton.setText("Call");
         callButton.addActionListener(new java.awt.event.ActionListener() {
@@ -179,6 +188,13 @@ public class GamePage extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_callButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        InstructionsPage instructions = new InstructionsPage();
+        instructions.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
      
     /**
      * @param args the command line arguments
@@ -337,6 +353,7 @@ public class GamePage extends javax.swing.JFrame {
     private javax.swing.JLabel deck;
     private javax.swing.JTextField dolllarSign;
     private javax.swing.JButton foldButton1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton peekButton;
