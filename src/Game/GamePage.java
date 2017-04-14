@@ -6,10 +6,8 @@
 package Game;
 
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.awt.Color;
+import java.util.*;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
@@ -24,9 +22,11 @@ public class GamePage extends javax.swing.JFrame {
      */
     public GamePage(int ai, int humans) {
         initComponents();
-        for(int i = 0; i < humans + 2; i++)
-            players.add(new Player());
-        gameLoop();
+        for(int i = 0; i < humans + 1; i++)
+        {
+            players.add(new Player(100,i));
+        }
+        gameSetup();
     }
     public GamePage() {
         initComponents();
@@ -42,14 +42,7 @@ public class GamePage extends javax.swing.JFrame {
     private void initComponents() {
 
         callButton = new javax.swing.JButton();
-        card1 = new javax.swing.JLabel();
-        card2 = new javax.swing.JLabel();
-        card3 = new javax.swing.JLabel();
-        card4 = new javax.swing.JLabel();
-        card5 = new javax.swing.JLabel();
         deck = new javax.swing.JLabel();
-        player2card1 = new javax.swing.JLabel();
-        player2card2 = new javax.swing.JLabel();
         placeBetButton = new javax.swing.JButton();
         foldButton1 = new javax.swing.JButton();
         betAmount = new javax.swing.JTextField();
@@ -57,47 +50,28 @@ public class GamePage extends javax.swing.JFrame {
         potAmount = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         peekButton = new javax.swing.JButton();
-        player1card1 = new javax.swing.JLabel();
-        player1card2 = new javax.swing.JLabel();
+        dolllarSign = new javax.swing.JTextField();
+        currentPlayerMoney = new javax.swing.JTextField();
+        player4Indicator = new javax.swing.JLabel();
+        player2Indicator = new javax.swing.JLabel();
+        player1Indicator = new javax.swing.JLabel();
+        player3Indicator = new javax.swing.JLabel();
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         callButton.setText("Call");
+        callButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                callButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(callButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 630, 100, 80));
-
-        card1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
-        card1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(card1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, 70, -1));
-
-        card2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
-        card2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(card2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 280, 70, 90));
-
-        card3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
-        card3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(card3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 280, 70, 90));
-
-        card4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
-        card4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(card4, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 280, 70, 90));
-
-        card5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
-        card5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(card5, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 280, 70, 90));
 
         deck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
         deck.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(deck, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 350, 70, 90));
-
-        player2card1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
-        player2card1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(player2card1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, 70, 90));
-
-        player2card2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
-        player2card2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(player2card2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, 70, 90));
+        getContentPane().add(deck, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 280, 70, 90));
 
         placeBetButton.setText("Bet");
         placeBetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -110,8 +84,8 @@ public class GamePage extends javax.swing.JFrame {
         foldButton1.setText("Fold");
         getContentPane().add(foldButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 630, 100, 80));
 
-        betAmount.setText("$20");
-        getContentPane().add(betAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 680, 100, 30));
+        betAmount.setText("0");
+        getContentPane().add(betAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 680, 80, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Pot: $");
@@ -133,13 +107,23 @@ public class GamePage extends javax.swing.JFrame {
         });
         getContentPane().add(peekButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 629, 160, 70));
 
-        player1card1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
-        player1card1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(player1card1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 70, 90));
+        dolllarSign.setEditable(false);
+        dolllarSign.setText("$");
+        getContentPane().add(dolllarSign, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 680, 20, 30));
 
-        player1card2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
-        player1card2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        getContentPane().add(player1card2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 510, 70, 90));
+        currentPlayerMoney.setEditable(false);
+        currentPlayerMoney.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        currentPlayerMoney.setText("$");
+        currentPlayerMoney.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                currentPlayerMoneyActionPerformed(evt);
+            }
+        });
+        getContentPane().add(currentPlayerMoney, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 560, 160, 60));
+        getContentPane().add(player4Indicator, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 290, 110, 110));
+        getContentPane().add(player2Indicator, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 110, 110));
+        getContentPane().add(player1Indicator, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 600, 110, 110));
+        getContentPane().add(player3Indicator, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, 110, 110));
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Backgrounds/poker table.png"))); // NOI18N
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
@@ -148,18 +132,53 @@ public class GamePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void placeBetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_placeBetButtonActionPerformed
-        // TODO add your handling code here:
+        
+        
+        if(Integer.parseInt(betAmount.getText()) <= currentPlayer.money && Integer.parseInt(betAmount.getText()) > 0)
+        {
+            pot +=Integer.parseInt(betAmount.getText());
+            currentPlayer.money -= Integer.parseInt(betAmount.getText());
+            lastBet = Integer.parseInt(betAmount.getText());
+            currentPlayerMoney.setForeground(Color.black);
+            nextPlayer();
+            
+        }
+        else
+        {
+            currentPlayerMoney.setForeground(Color.red);
+        }
+        
     }//GEN-LAST:event_placeBetButtonActionPerformed
 
     private void peekButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_peekButtonActionPerformed
         // TODO add your handling code here:
         
-        //System.out.println(currentPlayer.deck.get(0).cardToString());
-        //System.out.println(currentPlayer.deck.get(1).cardToString());
-        player1card1.setIcon(new javax.swing.ImageIcon(getClass().getResource(flip(currentPlayer.get(0))))); 
-        player1card2.setIcon(new javax.swing.ImageIcon(getClass().getResource(flip(currentPlayer.get(1))))); 
+        currentPlayer.getCard(0).flip();
+        currentPlayer.getCard(1).flip();
         
     }//GEN-LAST:event_peekButtonActionPerformed
+
+    private void currentPlayerMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentPlayerMoneyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_currentPlayerMoneyActionPerformed
+
+    private void callButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_callButtonActionPerformed
+        // TODO add your handling code here:
+        
+        if(lastBet <= currentPlayer.money && lastBet != -1)
+        {
+            pot +=lastBet;
+            currentPlayer.money -= lastBet;
+            currentPlayerMoney.setForeground(Color.black);
+            nextPlayer();
+            
+        }
+        else
+        {
+            currentPlayerMoney.setForeground(Color.red);
+        }
+        
+    }//GEN-LAST:event_callButtonActionPerformed
      
     /**
      * @param args the command line arguments
@@ -202,34 +221,40 @@ public class GamePage extends javax.swing.JFrame {
     }
     
     
-    public void gameLoop()
+    public void gameSetup()
     {
         mainDeck = new Deck(52);
         
         mainDeck.shuffle();
         
-        for(Iterator currentPlayer = players.listIterator(); currentPlayer.hasNext();)
-        {
-            Player temp = ((Player)currentPlayer.next());
-            temp.pushCard(mainDeck.popCard());
-        }
-        for(Iterator currentPlayer = players.listIterator(); currentPlayer.hasNext();)
-        {
-            Player temp = ((Player)currentPlayer.next());
-            temp.pushCard(mainDeck.popCard());
-        }
-        
-        /*for(Iterator currentPlayer = players.listIterator(); currentPlayer.hasNext();)
-        {
-            Player temp = ((Player)currentPlayer.next());
-            temp.printDeck();
+        for(int i = 0; i < 5; i++)
+            middleCards.pushCard(mainDeck.popCard(), getContentPane(), 410 + i * 90 , 280, false);
             
-        }*/
-        playerIter = players.iterator();
-        currentPlayer = (Player)playerIter.next();
         
-        
-        
+        for(Iterator currentPlayer = players.listIterator(); currentPlayer.hasNext();)
+        {
+            Player temp = ((Player)currentPlayer.next());
+            switch(temp.number)
+            {
+                case 0: temp.pushCard(mainDeck.popCard(),getContentPane(),550,510,false);
+                        temp.pushCard(mainDeck.popCard(),getContentPane(),640,510,false);
+                        break;
+                case 2: temp.pushCard(mainDeck.popCard(),getContentPane(),550,110,false);
+                        temp.pushCard(mainDeck.popCard(),getContentPane(),640,110,false);
+                        break;
+                case 1: temp.pushCard(mainDeck.popCard(),getContentPane(),160,310,false);
+                        temp.pushCard(mainDeck.popCard(),getContentPane(),240,310,false);
+                        break;
+                case 3: temp.pushCard(mainDeck.popCard(),getContentPane(),960,300,false);
+                        temp.pushCard(mainDeck.popCard(),getContentPane(),1040,300,false);
+                        break;
+                default: break;
+            }
+            
+        }
+      
+        playerIter = players.listIterator();
+        nextPlayer();
         
         
     }
@@ -239,22 +264,54 @@ public class GamePage extends javax.swing.JFrame {
     // 3 = spades
     
     
-    
-    public void placeCard(int x, int y)
+    public void nextPlayer()
     {
+        
+        potAmount.setText(Integer.toString(pot));
+        
+        betAmount.setText("0");
+        if(!playerIter.hasNext())
+            while(playerIter.hasPrevious())
+                playerIter.previous();
+        currentPlayer = (Player)playerIter.next();
+        
+        currentPlayerMoney.setText("$ " +Integer.toString(currentPlayer.money) + ".00");
+        
+        
+        switch(currentPlayer.number){
+            case 0: player1Indicator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Backgrounds/indicator.png")));
+                    player3Indicator.setIcon(null);
+                    player2Indicator.setIcon(null);
+                    player4Indicator.setIcon(null);
+                    break;
+            case 2: player3Indicator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Backgrounds/indicator.png")));
+                    player1Indicator.setIcon(null);
+                    player2Indicator.setIcon(null);
+                    player4Indicator.setIcon(null);
+                    break;
+            case 1: player2Indicator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Backgrounds/indicator.png")));
+                    player1Indicator.setIcon(null);
+                    player3Indicator.setIcon(null);
+                    player4Indicator.setIcon(null);
+                    break;
+            case 3: player4Indicator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Backgrounds/indicator.png")));
+                    player1Indicator.setIcon(null);
+                    player3Indicator.setIcon(null);
+                    player2Indicator.setIcon(null);
+                    break;
+            default: break;
+        }
+        
         
     }
     
-    public String flip(Card card) 
-    {
-        card.faceUp = !card.faceUp;
-         if(card.faceUp)
-            return "/Game/Cards/card"+card.cardToString()+".png";
-        else
-            return "/Game/Cards/cardBack_blue2.png";
-    }
     
-    public void pause(int milliseconds){
+
+    
+    
+   
+    
+    public synchronized void pause(int milliseconds){
         try{
             Thread.sleep(milliseconds);
         }catch(InterruptedException ex){
@@ -263,30 +320,31 @@ public class GamePage extends javax.swing.JFrame {
     }
     
     
-    Deck mainDeck;
+    Deck mainDeck = new Deck();
     ArrayList<Player> players = new ArrayList<Player>();
-    Iterator playerIter;
+    Deck middleCards = new Deck();
+    ListIterator playerIter;
     Player currentPlayer;
     int playerNumber = 1;
+    int pot = 0;
+    int lastBet = -1;
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
     private javax.swing.JTextField betAmount;
     private javax.swing.JButton callButton;
-    private javax.swing.JLabel card1;
-    private javax.swing.JLabel card2;
-    private javax.swing.JLabel card3;
-    private javax.swing.JLabel card4;
-    private javax.swing.JLabel card5;
+    private javax.swing.JTextField currentPlayerMoney;
     private javax.swing.JLabel deck;
+    private javax.swing.JTextField dolllarSign;
     private javax.swing.JButton foldButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton peekButton;
     private javax.swing.JButton placeBetButton;
-    private javax.swing.JLabel player1card1;
-    private javax.swing.JLabel player1card2;
-    private javax.swing.JLabel player2card1;
-    private javax.swing.JLabel player2card2;
+    private javax.swing.JLabel player1Indicator;
+    private javax.swing.JLabel player2Indicator;
+    private javax.swing.JLabel player3Indicator;
+    private javax.swing.JLabel player4Indicator;
     private javax.swing.JLabel potAmount;
     // End of variables declaration//GEN-END:variables
 }
