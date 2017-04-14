@@ -55,7 +55,7 @@ public class StartPage extends javax.swing.JFrame {
         jLabel2.setText("Texas Hold'em");
         jLayeredPane1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 40, -1, -1));
 
-        humanPlayers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single Player", "2 Player", "3 Player", "4 Player", "5 Player", "6 Player", "7 Player", "8 Player" }));
+        humanPlayers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single Player", "2 Player", "3 Player", "4 Player" }));
         jLayeredPane1.add(humanPlayers, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 150, 30));
 
         aiPlayers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No AI", "1 AI", "2 AI", "3 AI", "4 AI", "5 AI", "6 AI", "7 AI", "8 AI" }));

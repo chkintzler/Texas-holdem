@@ -71,15 +71,11 @@
         <Component class="javax.swing.JComboBox" name="humanPlayers">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="8">
+              <StringArray count="4">
                 <StringItem index="0" value="Single Player"/>
                 <StringItem index="1" value="2 Player"/>
                 <StringItem index="2" value="3 Player"/>
                 <StringItem index="3" value="4 Player"/>
-                <StringItem index="4" value="5 Player"/>
-                <StringItem index="5" value="6 Player"/>
-                <StringItem index="6" value="7 Player"/>
-                <StringItem index="7" value="8 Player"/>
               </StringArray>
             </Property>
           </Properties>
