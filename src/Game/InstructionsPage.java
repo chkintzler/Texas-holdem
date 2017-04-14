@@ -30,6 +30,7 @@ public class InstructionsPage extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         backButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,10 +40,17 @@ public class InstructionsPage extends javax.swing.JFrame {
         jTextArea1.setText("The beginning When playing Texas HoldEm poker, every player is dealt two cards face down\n – these are called your 'hole cards'. Then there is a round of betting where you can Check,\n Bet or Fold. This stage of the game is known as pre-flop and what you should do is dependent\n on those hole cards, or starting hand.\n\n When all the betting has finished three shared cards are dealt face up in the middle of the table. \nThis is called the flop. The flop The middle After this there is another round of betting,\n then a fourth shared card – called the turn – is dealt. texas-holdem-basics-turn-en_US The turn \nThere is another round of betting then a final shared card – called the river – and a final round of\n betting.  The river Your best Texas Holdem hands will be made by using your hole cards and the \nfive cards in the middle to make the best possible fivecard poker hand. Not sure what the best \nTexas Holdem poker hands are? You can visit the poker hand rankings page for more information! \n\nSo, for example, if you have 9-9 and the shared cards are 9-9-A-5-2 \nyou have four-of-a-kind. If the shared cards were J-Q-K-7-2 you would only have two nines. Sometimes the\n best texas hold em hand is made by the five shared cards on their own. If they were 10-10-10-10-A\n and you had 9-9 your hole cards would not play as there is a four-of-a-kind of higher value already \nshowing. The end There are two ways a hand can end. One is when the players in a hand turn over their \nhole cards and the player with the best hand wins. This is known as a showdown. The other is that someone \nwill bet enough that everyone else folds. This is how most hands end in Texas Hold'em and that's the magic \nof the game – you don't always need the best hand to win.");
         jScrollPane1.setViewportView(jTextArea1);
 
-        backButton.setText("Return to main menu");
+        backButton.setText("Return to Main Menu");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Return to Game");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -50,21 +58,25 @@ public class InstructionsPage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(1122, Short.MAX_VALUE)
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(204, 204, 204)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 872, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(204, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(backButton, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(160, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126)
+                .addGap(85, 85, 85)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -78,6 +90,11 @@ public class InstructionsPage extends javax.swing.JFrame {
         mainMenu.setVisible(true);
         dispose();
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new GamePage().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,6 +134,7 @@ public class InstructionsPage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
