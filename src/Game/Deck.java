@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Game;
+import java.awt.Container;
 import java.util.*;
 
 
@@ -61,6 +62,13 @@ public class Deck {
     public void pushCard(Card c)
     {
         deck.add(c);
+    }
+    
+    public void pushCard(Card c, Container game, int x, int y, boolean faceUp)
+    {
+        deck.add(c);
+        
+        c.moveCard(game, x, y, faceUp);
     }
     
     public void topPushCard(Card c)
