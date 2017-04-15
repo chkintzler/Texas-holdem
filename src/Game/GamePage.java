@@ -76,7 +76,7 @@ public class GamePage extends javax.swing.JFrame {
                 callButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(callButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 630, 100, 80));
+        getContentPane().add(callButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 630, 100, 80));
 
         deck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
         deck.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -279,10 +279,10 @@ public class GamePage extends javax.swing.JFrame {
     // 2 = hearts
     // 3 = spades
     
-    
+    public int turnCount = 0;
     public void nextPlayer()
     {
-        
+
         potAmount.setText(Integer.toString(pot));
         
         betAmount.setText("0");
@@ -293,27 +293,46 @@ public class GamePage extends javax.swing.JFrame {
         
         currentPlayerMoney.setText("$ " +Integer.toString(currentPlayer.money) + ".00");
         
+        //this works properly for 4 players only.
+        if(turnCount == 4){
+            mainDeck.popCard().moveCard(this,140,122,true);
+            mainDeck.popCard().moveCard(this,160,122,true);
+            mainDeck.popCard().moveCard(this,190,122,true);
+        }
+        else if(turnCount == 8){
+            mainDeck.popCard().moveCard(this,210,122,true);
+
+        }
+        else if(turnCount == 12){
+            mainDeck.popCard().moveCard(this,230,122,true);
+
+        }
         
         switch(currentPlayer.number){
+
             case 0: player1Indicator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Backgrounds/indicator.png")));
                     player3Indicator.setIcon(null);
                     player2Indicator.setIcon(null);
                     player4Indicator.setIcon(null);
+                    turnCount++;
                     break;
             case 2: player3Indicator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Backgrounds/indicator.png")));
                     player1Indicator.setIcon(null);
                     player2Indicator.setIcon(null);
                     player4Indicator.setIcon(null);
+                    turnCount++;
                     break;
             case 1: player2Indicator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Backgrounds/indicator.png")));
                     player1Indicator.setIcon(null);
                     player3Indicator.setIcon(null);
                     player4Indicator.setIcon(null);
+                    turnCount++;
                     break;
             case 3: player4Indicator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Backgrounds/indicator.png")));
                     player1Indicator.setIcon(null);
                     player3Indicator.setIcon(null);
                     player2Indicator.setIcon(null);
+                    turnCount++;
                     break;
             default: break;
         }
