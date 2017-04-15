@@ -294,19 +294,7 @@ public class GamePage extends javax.swing.JFrame {
         currentPlayerMoney.setText("$ " +Integer.toString(currentPlayer.money) + ".00");
         
         //this works properly for 4 players only.
-        if(turnCount == 4){
-            mainDeck.popCard().moveCard(this,140,122,true);
-            mainDeck.popCard().moveCard(this,160,122,true);
-            mainDeck.popCard().moveCard(this,190,122,true);
-        }
-        else if(turnCount == 8){
-            mainDeck.popCard().moveCard(this,210,122,true);
-
-        }
-        else if(turnCount == 12){
-            mainDeck.popCard().moveCard(this,230,122,true);
-
-        }
+        fourPlayerRiver();
         
         switch(currentPlayer.number){
 
@@ -354,7 +342,52 @@ public class GamePage extends javax.swing.JFrame {
         }
     }
     
+    public void fourPlayerRiver(){
+        if(turnCount == 4){
+            mainDeck.popCard().moveCard(this,410,280,true);
+            mainDeck.popCard().moveCard(this,500,280,true);
+            mainDeck.popCard().moveCard(this,590,280,true);
+        }
+        else if(turnCount == 8){
+            mainDeck.popCard().moveCard(this,680,280,true);
+
+        }
+        else if(turnCount == 12){
+            mainDeck.popCard().moveCard(this,770,280,true);
+
+        }
+    }
+    public void twoPlayerRiver(){
+                if(turnCount == 2){
+            mainDeck.popCard().moveCard(this,410,280,true);
+            mainDeck.popCard().moveCard(this,500,280,true);
+            mainDeck.popCard().moveCard(this,590,280,true);
+        }
+        else if(turnCount == 4){
+            mainDeck.popCard().moveCard(this,680,280,true);
+
+        }
+        else if(turnCount == 6){
+            mainDeck.popCard().moveCard(this,770,280,true);
+
+        }
+    }
     
+    public void threePlayerRiver(){
+                if(turnCount == 3){
+            mainDeck.popCard().moveCard(this,410,280,true);
+            mainDeck.popCard().moveCard(this,500,280,true);
+            mainDeck.popCard().moveCard(this,590,280,true);
+        }
+        else if(turnCount == 6){
+            mainDeck.popCard().moveCard(this,680,280,true);
+
+        }
+        else if(turnCount == 9){
+            mainDeck.popCard().moveCard(this,770,280,true);
+
+        }
+    }
     Deck mainDeck = new Deck();
     ArrayList<Player> players = new ArrayList<Player>();
     Deck middleCards = new Deck();
