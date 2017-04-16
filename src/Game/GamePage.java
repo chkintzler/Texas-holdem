@@ -228,8 +228,12 @@ public class GamePage extends javax.swing.JFrame {
     }//GEN-LAST:event_foldButton1ActionPerformed
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
-        // TODO add your handling code here:
-        nextPlayer();
+        // TODO add your handling code here
+        if (lastBet==0|| lastBet ==-1){
+            lastBet=0;
+            nextPlayer();
+        }
+        
     }//GEN-LAST:event_checkButtonActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
