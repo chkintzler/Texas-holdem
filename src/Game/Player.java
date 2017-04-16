@@ -16,16 +16,19 @@ public class Player extends Deck {
     public Player()
     {
         money = 100;
+        folded = false;
     }
     
     public Player(int startingMoney, int number)
     {
         money = startingMoney;
+        folded = false;
         this.number = number;
     }
     
     int money;
     int number;
+    boolean folded;
     String name;
     
     public boolean isAI (){
@@ -59,5 +62,21 @@ public class Player extends Deck {
     public Card getCard(int index)
     {
         return deck.get(index);
+    }
+    
+    public int handRank(Deck deck)
+    {
+        
+        Deck temp = new Deck();
+        temp.pushCard(this.deck.get(0));
+        temp.pushCard(this.deck.get(1));
+        
+        for(int i = 0; i < 5; i++)
+            temp.pushCard(deck.get(i));
+        
+        
+        //temp.deck.sort();
+        
+        return 0;
     }
 }
