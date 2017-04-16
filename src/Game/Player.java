@@ -125,9 +125,10 @@ public class Player extends Deck  {
                     return 883;
             }
         }
-            
+            ////////////////////////////////////////////////////////
+              return temp.get(0).getValue();
         
-        return 0;
+        //return 0;
     }
    
     
