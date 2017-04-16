@@ -83,7 +83,6 @@ public class Card extends javax.swing.JFrame{
     
     public String cardToString()
     {
-        System.out.println("faceValue = " + faceValue + " Suit" + suit);
         String temp = "";
         
         switch(suit)
@@ -115,7 +114,6 @@ public class Card extends javax.swing.JFrame{
             }
             
         
-        System.out.println(temp);
         
         return temp;
     }
