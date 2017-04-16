@@ -61,11 +61,49 @@ public class Player extends Deck  {
             temp.pushCard(deck.get(i));
         
         
-        temp.printDeck();
-        System.out.println("");
         Collections.sort(temp.deck, new CardCompare());
         
-        temp.printDeck();
+        
+        
+        boolean sameSuit = temp.get(0).getSuit() == temp.get(1).getSuit() && temp.get(1).getSuit() == temp.get(2).getSuit() && temp.get(2).getSuit() == temp.get(3).getSuit() && temp.get(3).getSuit() == temp.get(4).getSuit();
+        
+           
+        
+        /////////////////////////////////////////////////////// royal flush
+        if(temp.get(0).getValue() == 13 && temp.get(1).getValue() == 12 && temp.get(2).getValue() == 11 && temp.get(3).getValue() == 10 && temp.get(4).getValue() == 1 && sameSuit)
+            return 1;
+         ///////////////////////////////////////////////////////   staright flush
+        int lastValue;
+        for(int j = 0; j < 3; j++)
+        {
+            lastValue = temp.get(j).getValue();
+        
+            for(int i = j+1; i < 5; i++)
+            {
+                if(temp.get(i).getValue() != lastValue-1)
+                    break;
+                if(i == 4 && sameSuit)
+                    return 2;
+            }
+        }
+        ///////////////////////////////////////////////////////four of a kind
+        for(int j = 0; j < 3; j++)
+        {
+            lastValue = temp.get(j).getSuit();
+        
+            for(int i = j+1; i < 5; i++)
+            {
+                if(temp.get(i).getSuit() != lastValue)
+                    break;
+                if(i == 4)
+                    return 3;
+            }
+        }
+        ///////////////////////////////////////////////////////
+       
+            
+            
+        
         return 0;
     }
    
