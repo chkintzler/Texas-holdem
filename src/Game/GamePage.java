@@ -7,6 +7,8 @@ package Game;
 
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -192,6 +194,7 @@ public class GamePage extends javax.swing.JFrame {
         
         currentPlayer.getCard(0).flip();
         currentPlayer.getCard(1).flip();
+        currentPlayer.getCard(0).moveCardTO(getContentPane(),300, 300);
         
     }//GEN-LAST:event_peekButtonActionPerformed
 
@@ -230,6 +233,8 @@ public class GamePage extends javax.swing.JFrame {
                 
         currentPlayer.getCard(0).flip();
         currentPlayer.getCard(1).flip();
+        currentPlayer.folded = true;
+        nextPlayer();
     }//GEN-LAST:event_foldButton1ActionPerformed
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
@@ -319,7 +324,10 @@ public class GamePage extends javax.swing.JFrame {
                 default: break;
             }
             
+            
+            
         }
+        
       
         playerIter = players.listIterator();
         nextPlayer();
@@ -334,7 +342,7 @@ public class GamePage extends javax.swing.JFrame {
     
     public void nextPlayer()
     {
-
+        
         potAmount.setText(Integer.toString(pot));
         
         betAmount.setText("0");
@@ -345,6 +353,9 @@ public class GamePage extends javax.swing.JFrame {
                 playerIter.previous();
         }
         currentPlayer = (Player)playerIter.next();
+        
+        if(currentPlayer.folded)
+            nextPlayer();
         
         currentPlayerMoney.setText("$ " +Integer.toString(currentPlayer.money) + ".00");
         
@@ -397,14 +408,7 @@ public class GamePage extends javax.swing.JFrame {
     
     
    
-    
-    public synchronized void pause(int milliseconds){
-        try{
-            Thread.sleep(milliseconds);
-        }catch(InterruptedException ex){
-            Thread.currentThread().interrupt();
-        }
-    }
+
     
     
     public void endShowAll(){
@@ -431,6 +435,17 @@ public class GamePage extends javax.swing.JFrame {
             
         }
     }
+    
+    
+    
+ 
+    
+    
+    
+    
+    
+    
+    
     Deck mainDeck = new Deck();
     ArrayList<Player> players = new ArrayList<Player>();
     Deck middleCards = new Deck();
