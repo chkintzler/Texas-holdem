@@ -68,7 +68,7 @@ public class Card extends javax.swing.JFrame{
     
     public void flip() 
     {
-        
+        System.out.println("faceValue = " + faceValue + " suit = " + suit);
         faceUp = !faceUp;
          if(faceUp)
             displayCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/card" + cardToString() + ".png")));
@@ -103,6 +103,8 @@ public class Card extends javax.swing.JFrame{
         else
             switch(faceValue)
             {
+                case 1: temp = temp+"A";
+                        break;
                 case 11: temp =temp+"J";
                         break;
                 case 12:
