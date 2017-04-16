@@ -28,6 +28,10 @@ public class Player extends Deck {
     int number;
     String name;
     
+    public boolean isAI (){
+        return false;
+    }
+    
     public void printHand()
     {
         for(int i = 0; i < deck.size(); i++)
