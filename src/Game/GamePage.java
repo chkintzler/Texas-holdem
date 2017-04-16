@@ -22,7 +22,7 @@ public class GamePage extends javax.swing.JFrame {
      */
     public GamePage(int ai, int humans) {
         initComponents();
-        for(int i = 0; i < humans + 1; i++)
+        for(int i = 0; i < humans + ai + 1; i++)
         {
             players.add(new Player(100,i));
         }
@@ -42,6 +42,7 @@ public class GamePage extends javax.swing.JFrame {
     private void initComponents() {
 
         InstructionButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
         callButton = new javax.swing.JButton();
         checkButton = new javax.swing.JButton();
@@ -71,6 +72,10 @@ public class GamePage extends javax.swing.JFrame {
             }
         });
         getContentPane().add(InstructionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 10, -1, -1));
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Player Money:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 540, -1, -1));
 
         jToggleButton1.setText("Return to Main Menu");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -448,6 +453,7 @@ public class GamePage extends javax.swing.JFrame {
     private javax.swing.JButton foldButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton peekButton;
     private javax.swing.JButton placeBetButton;
