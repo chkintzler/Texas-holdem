@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Game;
-
+import java.util.*;
 import java.util.EmptyStackException;
 
 /**
@@ -34,7 +34,24 @@ public class Player extends Deck {
             System.out.println(i+1+ ": \t" + deck.get(i).getValue() + " of " + deck.get(i).getSuit());
     }
     
-    
+    public int handRank(Deck deck)
+    {
+        Deck temp = new Deck();
+
+        
+        temp.pushCard(this.deck.get(0));
+        temp.pushCard(this.deck.get(1));
+
+        for(int i = 0; i < 5; i++)
+            temp.pushCard(deck.get(i));        
+
+        return 0;
+        //temp.get(0).getValue();
+        
+    }
+
+
+
     public Card getCard(int index)
     {
         return deck.get(index);
