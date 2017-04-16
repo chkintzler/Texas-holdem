@@ -112,7 +112,19 @@ public class Player extends Deck  {
                     return 3;
             }
         }
-            
+        ////////////////////////////////////////////////////////pair
+              for(int j = 0; j < 6; j++){
+                  
+            lastValue = temp.get(j).getValue();
+        
+            for(int i = j+1; i < 2; i++)
+            {
+                if(temp.get(i).getValue() != lastValue)
+                    break;
+                if(i == 2)
+                    return 883;
+            }
+        }
             
         
         return 0;
