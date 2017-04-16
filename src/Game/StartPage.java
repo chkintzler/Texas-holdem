@@ -31,16 +31,23 @@ public class StartPage extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        jLabel3 = new javax.swing.JLabel();
+        jSlider1 = new javax.swing.JSlider();
         startButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        humanPlayers = new javax.swing.JComboBox<>();
-        aiPlayers = new javax.swing.JComboBox<>();
+        humanPlayers = new javax.swing.JComboBox<String>();
+        aiPlayers = new javax.swing.JComboBox<String>();
         instructButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLayeredPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("AI Difficulty");
+        jLayeredPane1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 160, -1, -1));
+        jLayeredPane1.add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 180, -1, -1));
 
         startButton.setText("Start Game");
         startButton.addActionListener(new java.awt.event.ActionListener() {
@@ -55,10 +62,15 @@ public class StartPage extends javax.swing.JFrame {
         jLabel2.setText("Texas Hold'em");
         jLayeredPane1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 40, -1, -1));
 
-        humanPlayers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Single Player", "2 Player", "3 Player", "4 Player" }));
+        humanPlayers.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Single Player", "2 Player", "3 Player", "4 Player" }));
         jLayeredPane1.add(humanPlayers, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, 150, 30));
 
-        aiPlayers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "No AI", "1 AI", "2 AI", "3 AI", "4 AI", "5 AI", "6 AI", "7 AI", "8 AI" }));
+        aiPlayers.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No AI", "1 AI", "2 AI", "3 AI" }));
+        aiPlayers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aiPlayersActionPerformed(evt);
+            }
+        });
         jLayeredPane1.add(aiPlayers, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 150, 30));
 
         instructButton.setText("Instructions");
@@ -101,6 +113,10 @@ public class StartPage extends javax.swing.JFrame {
         
     }//GEN-LAST:event_instructButtonActionPerformed
 
+    private void aiPlayersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aiPlayersActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aiPlayersActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -142,7 +158,9 @@ public class StartPage extends javax.swing.JFrame {
     private javax.swing.JButton instructButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JSlider jSlider1;
     private javax.swing.JButton startButton;
     // End of variables declaration//GEN-END:variables
 }
