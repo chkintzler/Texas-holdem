@@ -194,7 +194,6 @@ public class GamePage extends javax.swing.JFrame {
         
         currentPlayer.getCard(0).flip();
         currentPlayer.getCard(1).flip();
-        currentPlayer.getCard(0).moveCardTO(getContentPane(),300, 300);
         
     }//GEN-LAST:event_peekButtonActionPerformed
 
@@ -302,7 +301,7 @@ public class GamePage extends javax.swing.JFrame {
         //puts 5 cards face down on the table.
         for(int i = 0; i < 5; i++)
             middleCards.pushCard(mainDeck.popCard(), getContentPane(), 410 + i * 90 , 280, false);
-            
+        
         
         for(Iterator currentPlayer = players.listIterator(); currentPlayer.hasNext();)
         {
@@ -389,15 +388,17 @@ public class GamePage extends javax.swing.JFrame {
         if(currentPlayer.number == 0)
             switch(turnCount)
             {
-                case 1: mainDeck.popCard().moveCard(this,410,280,true);
-                        mainDeck.popCard().moveCard(this,500,280,true);
-                        mainDeck.popCard().moveCard(this,590,280,true);
+                case 1: middleCards.get(0).moveCard(this,410,280,true);
+                        middleCards.get(1).moveCard(this,500,280,true);
+                        middleCards.get(2).moveCard(this,590,280,true);
                         break;
-                case 2: mainDeck.popCard().moveCard(this,680,280,true);
+                case 2: middleCards.get(3).moveCard(this,680,280,true);
                         break;
-                case 3: mainDeck.popCard().moveCard(this,770,280,true);
+                case 3: middleCards.get(4).moveCard(this,770,280,true);
                         break;
                 case 4: endShowAll();
+                        middleCards.printDeck();
+                        currentPlayer.handRank(middleCards);
                         break;
                 default: break;
             }

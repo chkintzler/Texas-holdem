@@ -4,14 +4,15 @@
  * and open the template in the editor.
  */
 package Game;
-import java.util.*;
-import java.util.EmptyStackException;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  *
  * @author Cam
  */
-public class Player extends Deck {
+public class Player extends Deck  {
     
     public Player()
     {
@@ -29,6 +30,7 @@ public class Player extends Deck {
     int money;
     int number;
     boolean folded;
+    boolean isAI;
     String name;
     
     public boolean isAI (){
@@ -41,23 +43,7 @@ public class Player extends Deck {
             System.out.println(i+1+ ": \t" + deck.get(i).getValue() + " of " + deck.get(i).getSuit());
     }
     
-    public int handRank(Deck deck)
-    {
-        Deck temp = new Deck();
-
-        
-        temp.pushCard(this.deck.get(0));
-        temp.pushCard(this.deck.get(1));
-
-        for(int i = 0; i < 5; i++)
-            temp.pushCard(deck.get(i));        
-
-        return 0;
-        //temp.get(0).getValue();
-        
-    }
-
-
+   
 
     public Card getCard(int index)
     {
@@ -75,8 +61,14 @@ public class Player extends Deck {
             temp.pushCard(deck.get(i));
         
         
-        //temp.deck.sort();
+        temp.printDeck();
+        System.out.println("");
+        Collections.sort(temp.deck, new CardCompare());
         
+        temp.printDeck();
         return 0;
     }
+   
+    
+    
 }

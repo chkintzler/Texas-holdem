@@ -83,8 +83,41 @@ public class Card extends javax.swing.JFrame{
     
     public String cardToString()
     {
-        return (((suit) == 0) ? ("Clubs"):(((suit) == 1) ? ("Diamonds"):(((suit) == 2) ? ("Hearts"):("Spades")))) + 
-               (((faceValue) <= 10 && faceValue != 1) ? (Integer.toString(faceValue)):(((faceValue) == 11) ? ("J"):(((faceValue) == 12) ? ("Q"):(((faceValue) == 1) ? ("K"):("A")))));
+        System.out.println("faceValue = " + faceValue + " Suit" + suit);
+        String temp = "";
+        
+        switch(suit)
+        {
+            case 0: temp = "Clubs";
+                    break;
+            case 1: temp = "Diamonds";
+                    break;
+            case 2:
+                    temp = "Hearts";
+                    break;
+            case 3:
+                    temp = "Spades";
+                    break;                    
+        }
+        if(faceValue <= 10 && faceValue != 1)
+            temp = temp+Integer.toString(faceValue);
+        else
+            switch(faceValue)
+            {
+                case 11: temp =temp+"J";
+                        break;
+                case 12:
+                    temp = temp+"Q";
+                    break;
+                case 13:
+                    temp = temp+"K";
+                    break;
+            }
+            
+        
+        System.out.println(temp);
+        
+        return temp;
     }
     
     public int getSuit()
@@ -93,7 +126,7 @@ public class Card extends javax.swing.JFrame{
     }
     
     
-    
+   
     
     
     

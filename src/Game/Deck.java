@@ -18,7 +18,7 @@ public class Deck {
     {
         for(int i = 0; i < size; i++)
         {
-            deck.add(new Card(i / 13,(i % 14) + 1));                 
+            deck.add(new Card(i / 13,(i % 13) + 1));                 
         }                       
     }
     
