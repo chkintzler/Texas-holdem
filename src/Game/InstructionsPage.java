@@ -7,7 +7,7 @@ package Game;
 
 /**
  *
- * @author Cam
+ * @author Kory
  */
 public class InstructionsPage extends javax.swing.JFrame {
 
