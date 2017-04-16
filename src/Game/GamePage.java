@@ -91,6 +91,11 @@ public class GamePage extends javax.swing.JFrame {
         getContentPane().add(placeBetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 630, 100, 40));
 
         foldButton1.setText("Fold");
+        foldButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                foldButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(foldButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 630, 100, 80));
 
         betAmount.setText("0");
@@ -196,6 +201,13 @@ public class GamePage extends javax.swing.JFrame {
         instructions.setVisible(true);
         //dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void foldButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foldButton1ActionPerformed
+        // TODO add your handling code here:
+                
+        currentPlayer.getCard(0).flip();
+        currentPlayer.getCard(1).flip();
+    }//GEN-LAST:event_foldButton1ActionPerformed
      
     /**
      * @param args the command line arguments
