@@ -292,7 +292,7 @@ public class GamePage extends javax.swing.JFrame {
     // 2 = hearts
     // 3 = spades
     
-    public int turnCount = 0;
+    
     public void nextPlayer()
     {
 
@@ -300,14 +300,16 @@ public class GamePage extends javax.swing.JFrame {
         
         betAmount.setText("0");
         if(!playerIter.hasNext())
+        {
+            turnCount++;
             while(playerIter.hasPrevious())
                 playerIter.previous();
+        }
         currentPlayer = (Player)playerIter.next();
         
         currentPlayerMoney.setText("$ " +Integer.toString(currentPlayer.money) + ".00");
         
-        //this works properly for 4 players only.
-        fourPlayerRiver();
+        
         
         switch(currentPlayer.number){
 
@@ -315,34 +317,44 @@ public class GamePage extends javax.swing.JFrame {
                     player3Indicator.setIcon(null);
                     player2Indicator.setIcon(null);
                     player4Indicator.setIcon(null);
-                    turnCount++;
                     break;
             case 2: player3Indicator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Backgrounds/indicator.png")));
                     player1Indicator.setIcon(null);
                     player2Indicator.setIcon(null);
                     player4Indicator.setIcon(null);
-                    turnCount++;
                     break;
             case 1: player2Indicator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Backgrounds/indicator.png")));
                     player1Indicator.setIcon(null);
                     player3Indicator.setIcon(null);
                     player4Indicator.setIcon(null);
-                    turnCount++;
                     break;
             case 3: player4Indicator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Backgrounds/indicator.png")));
                     player1Indicator.setIcon(null);
                     player3Indicator.setIcon(null);
                     player2Indicator.setIcon(null);
-                    turnCount++;
                     break;
             default: break;
         }
         
+        if(currentPlayer.number == 0)
+            switch(turnCount)
+            {
+                case 1: mainDeck.popCard().moveCard(this,410,280,true);
+                        mainDeck.popCard().moveCard(this,500,280,true);
+                        mainDeck.popCard().moveCard(this,590,280,true);
+                        break;
+                case 2: mainDeck.popCard().moveCard(this,680,280,true);
+                        break;
+                case 3: mainDeck.popCard().moveCard(this,770,280,true);
+                        break;
+                case 4: endShowAll();
+                        break;
+                default: break;
+            }
+        
+        
         
     }
-    
-    
-
     
     
    
@@ -355,55 +367,6 @@ public class GamePage extends javax.swing.JFrame {
         }
     }
     
-    public void fourPlayerRiver(){
-        if(turnCount == 4){
-            mainDeck.popCard().moveCard(this,410,280,true);
-            mainDeck.popCard().moveCard(this,500,280,true);
-            mainDeck.popCard().moveCard(this,590,280,true);
-        }
-        else if(turnCount == 8){
-            mainDeck.popCard().moveCard(this,680,280,true);
-
-        }
-        else if(turnCount == 12){
-            mainDeck.popCard().moveCard(this,770,280,true);
-
-        }
-        else if(turnCount == 16){
-            endShowAll();
-        }
-    }
-    public void twoPlayerRiver(){
-                if(turnCount == 2){
-            mainDeck.popCard().moveCard(this,410,280,true);
-            mainDeck.popCard().moveCard(this,500,280,true);
-            mainDeck.popCard().moveCard(this,590,280,true);
-        }
-        else if(turnCount == 4){
-            mainDeck.popCard().moveCard(this,680,280,true);
-
-        }
-        else if(turnCount == 6){
-            mainDeck.popCard().moveCard(this,770,280,true);
-
-        }
-    }
-    
-    public void threePlayerRiver(){
-                if(turnCount == 3){
-            mainDeck.popCard().moveCard(this,410,280,true);
-            mainDeck.popCard().moveCard(this,500,280,true);
-            mainDeck.popCard().moveCard(this,590,280,true);
-        }
-        else if(turnCount == 6){
-            mainDeck.popCard().moveCard(this,680,280,true);
-
-        }
-        else if(turnCount == 9){
-            mainDeck.popCard().moveCard(this,770,280,true);
-
-        }
-    }
     
     public void endShowAll(){
 
@@ -437,6 +400,7 @@ public class GamePage extends javax.swing.JFrame {
     int playerNumber = 1;
     int pot = 0;
     int lastBet = -1;
+    int turnCount = 0;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
