@@ -191,9 +191,10 @@ public class GamePage extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
         InstructionsPage instructions = new InstructionsPage();
         instructions.setVisible(true);
-        dispose();
+        //dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
      
     /**
@@ -240,7 +241,7 @@ public class GamePage extends javax.swing.JFrame {
     public void gameSetup()
     {
         mainDeck = new Deck(52);
-        
+        //onTable = new Deck(0);
         mainDeck.shuffle();
         
         for(int i = 0; i < 5; i++)
@@ -356,6 +357,9 @@ public class GamePage extends javax.swing.JFrame {
             mainDeck.popCard().moveCard(this,770,280,true);
 
         }
+        else if(turnCount == 16){
+            endShowAll();
+        }
     }
     public void twoPlayerRiver(){
                 if(turnCount == 2){
@@ -386,6 +390,31 @@ public class GamePage extends javax.swing.JFrame {
         else if(turnCount == 9){
             mainDeck.popCard().moveCard(this,770,280,true);
 
+        }
+    }
+    
+    public void endShowAll(){
+
+               for(Iterator currentPlayer = players.listIterator(); currentPlayer.hasNext();)
+        {
+            Player temp = ((Player)currentPlayer.next());
+            switch(temp.number)
+            {
+                case 0: temp.getCard(0).flip();
+                        temp.getCard(1).flip();
+                        break;
+                case 1: temp.getCard(0).flip();
+                        temp.getCard(1).flip();
+                        break;
+                case 2: temp.getCard(0).flip();
+                        temp.getCard(1).flip();
+                        break;
+                case 3: temp.getCard(0).flip();
+                        temp.getCard(1).flip();
+                        break;
+                default: break;
+            }
+            
         }
     }
     Deck mainDeck = new Deck();
