@@ -87,11 +87,11 @@ public class Player extends Deck  {
             }
         }
         ///////////////////////////////////////////////////////four of a kind
-        for(int j = 0; j < 3; j++)
+        for(int j = 0; j < 4; j++)
         {
             lastValue = temp.get(j).getSuit();
         
-            for(int i = j+1; i < 5; i++)
+            for(int i = j+1; i < 4; i++)
             {
                 if(temp.get(i).getSuit() != lastValue)
                     break;
@@ -100,7 +100,18 @@ public class Player extends Deck  {
             }
         }
         ///////////////////////////////////////////////////////
-       
+       for(int j = 0; j < 5; j++)
+        {
+            lastValue = temp.get(j).getSuit();
+        
+            for(int i = j+1; i < 3; i++)
+            {
+                if(temp.get(i).getSuit() != lastValue)
+                    break;
+                if(i == 4)
+                    return 3;
+            }
+        }
             
             
         
