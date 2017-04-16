@@ -41,8 +41,10 @@ public class GamePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        InstructionButton = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
         callButton = new javax.swing.JButton();
+        checkButton = new javax.swing.JButton();
         deck = new javax.swing.JLabel();
         placeBetButton = new javax.swing.JButton();
         foldButton1 = new javax.swing.JButton();
@@ -62,13 +64,16 @@ public class GamePage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("Instructions");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        InstructionButton.setText("Instructions");
+        InstructionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                InstructionButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 10, -1, -1));
+        getContentPane().add(InstructionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 10, -1, -1));
+
+        jToggleButton1.setText("Return to Main Menu");
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 10, -1, -1));
 
         callButton.setText("Call");
         callButton.addActionListener(new java.awt.event.ActionListener() {
@@ -77,6 +82,14 @@ public class GamePage extends javax.swing.JFrame {
             }
         });
         getContentPane().add(callButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 630, 100, 80));
+
+        checkButton.setText("Check");
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(checkButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 630, 100, 80));
 
         deck.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/cardBack_blue2.png"))); // NOI18N
         deck.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -88,7 +101,7 @@ public class GamePage extends javax.swing.JFrame {
                 placeBetButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(placeBetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 630, 100, 40));
+        getContentPane().add(placeBetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 630, 100, 40));
 
         foldButton1.setText("Fold");
         foldButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -99,7 +112,7 @@ public class GamePage extends javax.swing.JFrame {
         getContentPane().add(foldButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 630, 100, 80));
 
         betAmount.setText("0");
-        getContentPane().add(betAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 680, 80, 30));
+        getContentPane().add(betAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 680, 80, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Pot: $");
@@ -123,7 +136,7 @@ public class GamePage extends javax.swing.JFrame {
 
         dolllarSign.setEditable(false);
         dolllarSign.setText("$");
-        getContentPane().add(dolllarSign, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 680, 20, 30));
+        getContentPane().add(dolllarSign, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 680, 20, 30));
 
         currentPlayerMoney.setEditable(false);
         currentPlayerMoney.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -194,13 +207,13 @@ public class GamePage extends javax.swing.JFrame {
         
     }//GEN-LAST:event_callButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void InstructionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InstructionButtonActionPerformed
         // TODO add your handling code here:
         
         InstructionsPage instructions = new InstructionsPage();
         instructions.setVisible(true);
         //dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_InstructionButtonActionPerformed
 
     private void foldButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_foldButton1ActionPerformed
         // TODO add your handling code here:
@@ -208,6 +221,11 @@ public class GamePage extends javax.swing.JFrame {
         currentPlayer.getCard(0).flip();
         currentPlayer.getCard(1).flip();
     }//GEN-LAST:event_foldButton1ActionPerformed
+
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
+        // TODO add your handling code here:
+        nextPlayer();
+    }//GEN-LAST:event_checkButtonActionPerformed
      
     /**
      * @param args the command line arguments
@@ -256,6 +274,7 @@ public class GamePage extends javax.swing.JFrame {
         //onTable = new Deck(0);
         mainDeck.shuffle();
         
+        //puts 5 cards face down on the table.
         for(int i = 0; i < 5; i++)
             middleCards.pushCard(mainDeck.popCard(), getContentPane(), 410 + i * 90 , 280, false);
             
@@ -404,15 +423,17 @@ public class GamePage extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
+    private javax.swing.JButton InstructionButton;
     private javax.swing.JTextField betAmount;
     private javax.swing.JButton callButton;
+    private javax.swing.JButton checkButton;
     private javax.swing.JTextField currentPlayerMoney;
     private javax.swing.JLabel deck;
     private javax.swing.JTextField dolllarSign;
     private javax.swing.JButton foldButton1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JButton peekButton;
     private javax.swing.JButton placeBetButton;
     private javax.swing.JLabel player1Indicator;
