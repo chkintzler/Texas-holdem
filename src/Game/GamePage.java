@@ -73,6 +73,11 @@ public class GamePage extends javax.swing.JFrame {
         getContentPane().add(InstructionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 10, -1, -1));
 
         jToggleButton1.setText("Return to Main Menu");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 10, -1, -1));
 
         callButton.setText("Call");
@@ -226,6 +231,12 @@ public class GamePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         nextPlayer();
     }//GEN-LAST:event_checkButtonActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+        StartPage s = new StartPage();
+        s.setVisible(true);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
      
     /**
      * @param args the command line arguments
