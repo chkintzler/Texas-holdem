@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author Cam
+ * @author Kory
  */
 public class GamePage extends javax.swing.JFrame {
 
