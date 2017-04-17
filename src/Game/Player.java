@@ -64,7 +64,21 @@ public class Player extends Deck  {
         Collections.sort(temp.deck, new CardCompare());
         
         
-        
+        /////////////////////////////////////////////////////////////straight
+        if(temp.get(0).getValue() == (temp.get(1).getValue()-1) &&
+           temp.get(0).getValue() == (temp.get(2).getValue()-2) &&
+           temp.get(0).getValue() == (temp.get(3).getValue()-3) &&
+           temp.get(0).getValue() == (temp.get(4).getValue()-4) ||
+           temp.get(1).getValue() == (temp.get(2).getValue()-1) &&
+           temp.get(1).getValue() == (temp.get(3).getValue()-2) &&
+           temp.get(1).getValue() == (temp.get(4).getValue()-3) &&
+           temp.get(1).getValue() == (temp.get(5).getValue()-4) ||
+           temp.get(2).getValue() == (temp.get(3).getValue()-1) &&
+           temp.get(2).getValue() == (temp.get(4).getValue()-2) &&
+           temp.get(2).getValue() == (temp.get(5).getValue()-3) &&
+           temp.get(2).getValue() == (temp.get(6).getValue()-4)   ){
+            return 6;
+        }
  
               ///////////////////////////////////////////////////////three of a kind
         for(int i=0; i<4; i++){
