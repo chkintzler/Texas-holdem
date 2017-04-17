@@ -57,6 +57,11 @@ public class Deck {
         throw new EmptyStackException();
     }
     
+    public void removeCard(int index)
+    {
+        deck.remove(index);
+    }
+    
     
     
     public void pushCard(Card c)

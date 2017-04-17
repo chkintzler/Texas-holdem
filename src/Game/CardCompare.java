@@ -14,7 +14,7 @@ import java.util.Comparator;
 public class CardCompare implements Comparator<Card> {
     @Override
     public int compare(Card o1, Card o2) {
-        return o1.getValue() - o2.getValue();
+        return o2.getValue() - o1.getValue();
         
     }
 }

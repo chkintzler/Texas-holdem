@@ -195,6 +195,7 @@ public class GamePage extends javax.swing.JFrame {
         currentPlayer.getCard(0).flip();
         currentPlayer.getCard(1).flip();
         
+        
     }//GEN-LAST:event_peekButtonActionPerformed
 
     private void currentPlayerMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentPlayerMoneyActionPerformed
@@ -397,8 +398,6 @@ public class GamePage extends javax.swing.JFrame {
                 case 3: middleCards.get(4).moveCard(this,770,280,true);
                         break;
                 case 4: endShowAll();
-                        middleCards.printDeck();
-                        currentPlayer.handRank(middleCards);
                         break;
                 default: break;
             }
@@ -435,6 +434,19 @@ public class GamePage extends javax.swing.JFrame {
             }
             
         }
+               
+        Player bestPlayer = players.get(0);
+        
+        for(int i = 1; i < players.size()-1; i++)
+        {
+            if(players.get(i).handRank(middleCards) < bestPlayer.handRank(middleCards))
+            {
+                bestPlayer = players.get(i);
+            }
+        }
+        
+        System.out.println("Player " + bestPlayer.number + " wins with " + bestPlayer.handRank(middleCards));
+               
     }
     
     
@@ -443,7 +455,7 @@ public class GamePage extends javax.swing.JFrame {
     
     
     
-    
+   
     
     
     

@@ -223,6 +223,7 @@ public class Player extends Deck  {
     }
     
     
+    
     public Deck duplicateDeck(Deck input)
     {
         Deck temp = new Deck();
@@ -246,11 +247,11 @@ public class Player extends Deck  {
                 if(temp.get(i) != temp.get(j) && temp.get(i).getValue() == temp.get(j).getValue())
                 {
                     unique = false;
-                    if(!temp.get(i).faceUp || !temp.get(j).faceUp)
+                    if(temp.get(i).unique || temp.get(j).unique)
                     {
                         uniqueDeck.pushCard(temp.get(i));
-                        temp.get(i).faceUp = true;
-                        temp.get(j).faceUp = true;
+                        temp.get(i).unique = true;
+                        temp.get(j).unique = true;
                     }
                     break;
                 }
