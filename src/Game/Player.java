@@ -70,7 +70,110 @@ public class Player extends Deck  {
         temp.printDeck();
         
         
+        Deck temp3 = duplicateDeck(temp);
         
+        
+        /////////////////////////////////////////////////////////
+        if(temp2.deck.size() >= 5)
+        {
+            for(int i = 0; i < 8-temp2.deck.size();i++)
+            {
+                if(temp.get(0+i).getValue() == 13 && temp.get(1+i).getValue() == 12 && temp.get(2+i).getValue() == 11 && temp.get(3+i).getValue() == 10 && temp.get(temp.deck.size()-1).getValue() == 1)
+                {
+                    if(temp.get(0+i).getSuit() == temp.get(1+i).getSuit() && temp.get(1+i).getSuit() == temp.get(2+i).getSuit() && temp.get(2+i).getSuit() == temp.get(3+i).getSuit() && temp.get(2+i).getSuit() == temp.get(temp.deck.size()-1).getSuit())
+                    {
+                        return 1;
+                    }
+                }
+                                    
+            }
+        }
+        
+        
+        /////////////////////////////////////////////////////////
+        
+        if(temp2.deck.size() >= 5)
+        {
+            for(int i = 0; i < 8-temp2.deck.size();i++)
+            {
+                
+                if(temp2.get(0+i).getValue() == temp2.get(1+i).getValue()+1 && temp2.get(0+i).getSuit() == temp2.get(1+i).getSuit())
+                {
+                    if(temp2.get(1+i).getValue() == temp2.get(2+i).getValue()+1)
+                    {
+                        if(temp2.get(2+i).getValue() == temp2.get(3+i).getValue()+1)
+                        {
+                            if(temp2.get(3+i).getValue() == temp2.get(4+i).getValue()+1)
+                            {
+                                return 2;
+                            }
+                        }
+                    }
+                }
+                    
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        /////////////////////////////////////////////////////////
+        
+         for(int i=0; i<4; i++){
+            if(temp.get(i).getValue()==temp.get(i+1).getValue() && temp.get(i).getValue()==temp.get(i+2).getValue() && temp.get(i).getValue()==temp.get(i+3).getValue())
+                return 3;
+        }
+        
+        
+        ///////////////////////////////////////////////////
+        
+        
+        
+        for(int i=0; i<4; i++){
+            if(temp.get(i).getValue()==temp.get(i+1).getValue() && temp.get(i).getValue()==temp.get(i+2).getValue())
+            {
+                temp3.removeCard(i);
+                temp3.removeCard(i+1);
+                temp3.removeCard(i+2);
+                
+                int numPairs = 0;
+                for (int j = 0; j < 6; j++) {
+                    if (temp.get(j).getValue() == temp.get(j + 1).getValue()) {
+                        numPairs++;
+                    }
+                    if (numPairs == 2) {
+                        return 4;
+                    }
+                }
+            }
+        }
+        
+        
+        
+        
+        
+        
+        /////////////////////////////////////////////////////////////flush
+        int spadeCount = 0;
+        int heartCount = 0;
+        int diamondCount = 0;
+        int clubCount = 0;
+        for(int i=0; i<=6; i++)
+        {
+            if(temp.get(i).getSuit()== 0)
+                clubCount++;
+            if(temp.get(i).getSuit()== 1)
+                diamondCount++;
+            if(temp.get(i).getSuit()== 2)
+                heartCount++;
+            if(temp.get(i).getSuit()== 3)
+                spadeCount++;
+        } if(clubCount >=5 || diamondCount >=5 || heartCount >=5 || spadeCount >=5)
+            return 5;
         /////////////////////////////////////////////////////////////straight
         if(temp2.deck.size() >= 5)
         {
@@ -119,6 +222,14 @@ public class Player extends Deck  {
         //return 0;
     }
     
+    
+    public Deck duplicateDeck(Deck input)
+    {
+        Deck temp = new Deck();
+        for(int i = 0; i < 7; i++)
+            temp.pushCard(input.get(i));
+        return temp;
+    }
     
     
    public Deck makeUnqiue(Deck temp)
