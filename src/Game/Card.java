@@ -41,6 +41,8 @@ public class Card extends javax.swing.JFrame{
     private int faceValue;
     private int suit;
     boolean faceUp = false;
+    boolean unique = true;
+    
     
    
     public void moveCard(Container game, int x, int y, boolean faceUp)
