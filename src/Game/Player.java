@@ -67,7 +67,7 @@ public class Player extends Deck  {
         
  
               ///////////////////////////////////////////////////////three of a kind
-        for(int i=0; i<6; i++){
+        for(int i=0; i<4; i++){
             if(temp.get(i).getValue()==temp.get(i+1).getValue() && temp.get(i).getValue()==temp.get(i+2).getValue())
                 return 7;
         }
