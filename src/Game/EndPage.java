@@ -17,7 +17,7 @@ public class EndPage extends javax.swing.JFrame {
      */
     public EndPage(int number) {
         initComponents();
-        winnerName.setText(Integer.toString(number));
+        winnerName.setText("Player " + Integer.toString(number) + " won");
     }
     
      public EndPage() {
@@ -57,9 +57,19 @@ public class EndPage extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 50, -1, -1));
 
         exitButton.setText("Exit to dekstop");
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(exitButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 600, -1, -1));
 
         mainMenuButton.setText("Back to main menu");
+        mainMenuButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainMenuButtonActionPerformed(evt);
+            }
+        });
         getContentPane().add(mainMenuButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 600, -1, -1));
 
         backgound.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Backgrounds/endgame.jpg"))); // NOI18N
@@ -71,6 +81,19 @@ public class EndPage extends javax.swing.JFrame {
     private void winnerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_winnerNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_winnerNameActionPerformed
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void mainMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuButtonActionPerformed
+        // TODO add your handling code here:
+        
+        StartPage mainMenu = new StartPage();
+        mainMenu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_mainMenuButtonActionPerformed
 
     /**
      * @param args the command line arguments
