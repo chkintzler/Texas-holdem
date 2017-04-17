@@ -65,68 +65,28 @@ public class Player extends Deck  {
         
         
         
-        boolean sameSuit = temp.get(0).getSuit() == temp.get(1).getSuit() && temp.get(1).getSuit() == temp.get(2).getSuit() && temp.get(2).getSuit() == temp.get(3).getSuit() && temp.get(3).getSuit() == temp.get(4).getSuit();
-        
-           
-        
-        /////////////////////////////////////////////////////// royal flush
-        if(temp.get(0).getValue() == 13 && temp.get(1).getValue() == 12 && temp.get(2).getValue() == 11 && temp.get(3).getValue() == 10 && temp.get(4).getValue() == 1 && sameSuit)
-            return 1;
-         ///////////////////////////////////////////////////////   staright flush
-        int lastValue;
-        for(int j = 0; j < 3; j++)
-        {
-            lastValue = temp.get(j).getValue();
-        
-            for(int i = j+1; i < 5; i++)
-            {
-                if(temp.get(i).getValue() != lastValue-1)
-                    break;
-                if(i == 4 && sameSuit)
-                    return 2;
-            }
+ 
+              ///////////////////////////////////////////////////////three of a kind
+        for(int i=0; i<6; i++){
+            if(temp.get(i).getValue()==temp.get(i+1).getValue() && temp.get(i).getValue()==temp.get(i+2).getValue())
+                return 7;
         }
-        ///////////////////////////////////////////////////////four of a kind
-        for(int j = 0; j < 4; j++)
-        {
-            lastValue = temp.get(j).getSuit();
-        
-            for(int i = j+1; i < 4; i++)
-            {
-                if(temp.get(i).getSuit() != lastValue)
-                    break;
-                if(i == 4)
-                    return 3;
+       ///////////////////////////////////////////////////////two pair
+        int numPairs =0;
+        for(int i=0; i<6; i++){
+            if(temp.get(i).getValue()==temp.get(i+1).getValue()){
+                numPairs++;
             }
-        }
-        ///////////////////////////////////////////////////////
-       for(int j = 0; j < 5; j++)
-        {
-            lastValue = temp.get(j).getSuit();
-        
-            for(int i = j+1; i < 3; i++)
-            {
-                if(temp.get(i).getSuit() != lastValue)
-                    break;
-                if(i == 4)
-                    return 3;
-            }
+            if (numPairs==2)
+                return 8;
         }
         ////////////////////////////////////////////////////////pair
-              for(int j = 0; j < 6; j++){
-                  
-            lastValue = temp.get(j).getValue();
-        
-            for(int i = j+1; i < 2; i++)
-            {
-                if(temp.get(i).getValue() != lastValue)
-                    break;
-                if(i == 2)
-                    return 883;
-            }
+        for(int i=0; i<6; i++){
+            if(temp.get(i).getValue()==temp.get(i+1).getValue())
+                return 9;
         }
             ////////////////////////////////////////////////////////
-              return temp.get(0).getValue();
+              return 10 ;//temp.get(0).getValue();
         
         //return 0;
     }
