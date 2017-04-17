@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+package Game;
+
 /**
  *
  * @author kory
@@ -13,7 +15,12 @@ public class EndPage extends javax.swing.JFrame {
     /**
      * Creates new form EndPAge
      */
-    public EndPage() {
+    public EndPage(int number) {
+        initComponents();
+        winnerName.setText(Integer.toString(number));
+    }
+    
+     public EndPage() {
         initComponents();
     }
 
@@ -26,7 +33,7 @@ public class EndPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        winnerName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         exitButton = new javax.swing.JButton();
         mainMenuButton = new javax.swing.JButton();
@@ -35,14 +42,14 @@ public class EndPage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setEditable(false);
-        jTextField1.setText("Payer X has won the game!");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        winnerName.setEditable(false);
+        winnerName.setText("Payer X has won the game!");
+        winnerName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                winnerNameActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 140, -1));
+        getContentPane().add(winnerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, 140, -1));
 
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 153, 153));
@@ -61,9 +68,9 @@ public class EndPage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void winnerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_winnerNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_winnerNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,7 +112,7 @@ public class EndPage extends javax.swing.JFrame {
     private javax.swing.JLabel backgound;
     private javax.swing.JButton exitButton;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton mainMenuButton;
+    private javax.swing.JTextField winnerName;
     // End of variables declaration//GEN-END:variables
 }

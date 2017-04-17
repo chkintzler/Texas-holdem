@@ -70,7 +70,6 @@ public class Card extends javax.swing.JFrame{
     
     public void flip() 
     {
-        System.out.println("faceValue = " + faceValue + " suit = " + suit);
         faceUp = !faceUp;
          if(faceUp)
             displayCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Game/Cards/card" + cardToString() + ".png")));

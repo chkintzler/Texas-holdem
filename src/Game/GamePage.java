@@ -6,13 +6,14 @@
 package Game;
 
 
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 import javax.swing.Icon;
 import javax.swing.JLabel;
-
+import Game.EndPage;
 /**
  *
  * @author Kory
@@ -244,6 +245,8 @@ public class GamePage extends javax.swing.JFrame {
             nextPlayer();
         }
         
+        
+        
     }//GEN-LAST:event_checkButtonActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
@@ -446,6 +449,13 @@ public class GamePage extends javax.swing.JFrame {
         }
         
         System.out.println("Player " + bestPlayer.number + " wins with " + bestPlayer.handRank(middleCards));
+       
+        pause(1000);
+        
+        EndPage end = new EndPage(bestPlayer.number+1);
+        end.setVisible(true);
+        dispose();
+        
                
     }
     
@@ -453,7 +463,13 @@ public class GamePage extends javax.swing.JFrame {
     
  
     
-    
+     public void pause(int milliseconds){
+        try{
+            Thread.sleep(milliseconds);
+        }catch(InterruptedException ex){
+            Thread.currentThread().interrupt();
+        }
+        }
     
    
     
