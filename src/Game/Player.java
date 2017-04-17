@@ -63,21 +63,35 @@ public class Player extends Deck  {
         
         Collections.sort(temp.deck, new CardCompare());
         
+        Deck temp2 = makeUnqiue(temp);
+        
+        temp2.printDeck();
+        System.out.println("");
+        temp.printDeck();
+        
+        
         
         /////////////////////////////////////////////////////////////straight
-        if(temp.get(0).getValue() == (temp.get(1).getValue()-1) &&
-           temp.get(0).getValue() == (temp.get(2).getValue()-2) &&
-           temp.get(0).getValue() == (temp.get(3).getValue()-3) &&
-           temp.get(0).getValue() == (temp.get(4).getValue()-4) ||
-           temp.get(1).getValue() == (temp.get(2).getValue()-1) &&
-           temp.get(1).getValue() == (temp.get(3).getValue()-2) &&
-           temp.get(1).getValue() == (temp.get(4).getValue()-3) &&
-           temp.get(1).getValue() == (temp.get(5).getValue()-4) ||
-           temp.get(2).getValue() == (temp.get(3).getValue()-1) &&
-           temp.get(2).getValue() == (temp.get(4).getValue()-2) &&
-           temp.get(2).getValue() == (temp.get(5).getValue()-3) &&
-           temp.get(2).getValue() == (temp.get(6).getValue()-4)   ){
-            return 6;
+        if(temp2.deck.size() >= 5)
+        {
+            for(int i = 0; i < 8-temp2.deck.size();i++)
+            {
+                
+                if(temp2.get(0+i).getValue() == temp2.get(1+i).getValue()+1)
+                {
+                    if(temp2.get(1+i).getValue() == temp2.get(2+i).getValue()+1)
+                    {
+                        if(temp2.get(2+i).getValue() == temp2.get(3+i).getValue()+1)
+                        {
+                            if(temp2.get(3+i).getValue() == temp2.get(4+i).getValue()+1)
+                            {
+                                return 6;
+                            }
+                        }
+                    }
+                }
+                    
+            }
         }
  
               ///////////////////////////////////////////////////////three of a kind
@@ -104,7 +118,44 @@ public class Player extends Deck  {
         
         //return 0;
     }
-   
+    
+    
+    
+   public Deck makeUnqiue(Deck temp)
+    {
+        boolean unique;
+
+        Deck uniqueDeck = new Deck();
+
+        for(int i = 0; i < 7; i++)
+        {
+            unique = true;
+            for(int j = 0; j < 7; j++)
+            {
+                if(temp.get(i) != temp.get(j) && temp.get(i).getValue() == temp.get(j).getValue())
+                {
+                    unique = false;
+                    if(!temp.get(i).faceUp || !temp.get(j).faceUp)
+                    {
+                        uniqueDeck.pushCard(temp.get(i));
+                        temp.get(i).faceUp = true;
+                        temp.get(j).faceUp = true;
+                    }
+                    break;
+                }
+            }
+
+            if(unique)
+                uniqueDeck.pushCard(temp.get(i));
+
+
+
+
+        }
+
+
+        return uniqueDeck;
+    }
     
     
 }
